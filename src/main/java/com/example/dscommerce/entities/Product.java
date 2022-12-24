@@ -1,6 +1,7 @@
 package com.example.dscommerce.entities;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -14,9 +15,9 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private Double price;
     @Column(columnDefinition = "TEXT")
     private String description;
-    private Double price;
     private String imgUrl;
 
     @ManyToMany
@@ -89,6 +90,10 @@ public class Product {
 
     public Set<OrderItem> getItems() {
         return items;
+    }
+
+    public List<Order> getOrders() {
+        return items.stream().map(x -> x.getOrder()).toList();
     }
     //#endregion
     
