@@ -39,6 +39,28 @@ public class ProductService {
         Page<Product> products = repository.findAll(pageable);
         return products.map(product -> new ModelMapper().map(product, ProductDTO.class));
     }
+    
+    
+    public ProductDTO insert(ProductDTO dto){
+        
+        // Removendo o id para conseguir fazer o cadastro
+        dto.setId(null);
+
+        //Criar um objeto de mapeamento
+        ModelMapper mapper = new ModelMapper();
+
+        //Converter o nosso produtoDTO em um Produto
+        Product product = mapper.map(dto, Product.class);
+
+        //Salvar o produto no banco
+        product = repository.save(product);
+
+        dto.setId(product.getId());
+
+        //Retornar o ProdutoDTO atualizado
+        return dto;
+
+    }
 
 
 
