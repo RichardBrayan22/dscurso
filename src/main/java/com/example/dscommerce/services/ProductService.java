@@ -62,6 +62,18 @@ public class ProductService {
 
     }
 
+    public ProductDTO update(Long id,ProductDTO dto) {
 
+        dto.setId(id);
+
+        ModelMapper mapper = new ModelMapper();
+
+        Product product = mapper.map(dto, Product.class);
+
+        repository.save(product);
+        
+        return dto;
+
+    }
 
 }
