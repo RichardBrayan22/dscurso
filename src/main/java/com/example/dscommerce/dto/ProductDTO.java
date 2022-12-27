@@ -1,5 +1,7 @@
 package com.example.dscommerce.dto;
 
+import com.example.dscommerce.entities.Product;
+
 public class ProductDTO {
 
     private Long id;
@@ -20,6 +22,7 @@ public class ProductDTO {
         this.description = description;
         this.imgUrl = imgUrl;
     }
+
     //#endregion
 
     //#region Getters e Setters
