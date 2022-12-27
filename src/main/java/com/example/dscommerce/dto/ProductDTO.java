@@ -1,12 +1,18 @@
 package com.example.dscommerce.dto;
 
-import com.example.dscommerce.entities.Product;
+import jakarta.validation.constraints.*;
+
 
 public class ProductDTO {
 
     private Long id;
+    @Size(min = 3, max = 80, message = "Nome precisa ter de 3 a 80 caracteres")
+    @NotBlank(message = "Campo requerido")
     private String name;
+    @Positive(message = "O preço deve ser positivo")
     private Double price;
+    @Size(min = 10, message = "Description precisa ter no mínimo 10 caracteres")
+    @NotBlank(message = "Campo requerido")
     private String description;
     private String imgUrl;
 
@@ -66,7 +72,5 @@ public class ProductDTO {
         this.imgUrl = imgUrl;
     }
     //#endregion
-
-    
 
 }
